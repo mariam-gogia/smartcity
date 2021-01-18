@@ -4,8 +4,8 @@ The Smart City is a fully automated city of the future. The city is equipped wit
 
 ## Services
 
-The project consists of 4 services: \
-- **Ledger Service**: responsible for monetary transactions \
-- **Model Service**: responsible for defining and maintaining objects in the system (cities, residents, IoTs) \
-- **Controller Service**: 'the brain' of the system, responsible for reacting on events recieved from sensors. Monitors cities, devices, and people in the system. \
-- **Authentication Service**: the auth_token is required to execute any action in the system. The auth_token carries the informaton about token owner's roles and privileges. The authentication service allows/denies the access to system functions based on provided auth_token. \
+The project consists of 4 services: 
+- **Ledger Service**: responsible for monetary transactions 
+- **Model Service**: responsible for defining and maintaining objects in the system (cities, residents, IoTs) 
+- **Controller Service**: 'the brain' of the system, responsible for reacting on events recieved from sensors. Monitors cities, devices, and people in the system. 
+- **Authentication Service**: the auth_token is required to execute any action in the system. The auth_token carries the informaton about token owner's roles and privileges. The authentication service allows/denies the access to system functions based on provided auth_token. 
