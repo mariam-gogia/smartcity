@@ -16,3 +16,11 @@ Use Case Diagram
 
 Class Diagram
 ![model_service_class](images/model_class.png)
+
+### Authentication Service
+Use Case Diagram
+![authentication_service_use_case](images/authentication_use_case.png)
+
+Class Diagram
+![authentication_service_class](images/authentication_class.png)
+
