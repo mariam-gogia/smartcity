@@ -9,3 +9,6 @@ The project consists of 4 services:
 - **Model Service**: responsible for defining and maintaining objects in the system (cities, residents, IoTs) 
 - **Controller Service**: 'the brain' of the system, responsible for reacting on events recieved from sensors. Monitors cities, devices, and people in the system. 
 - **Authentication Service**: the auth_token is required to execute any action in the system. The auth_token carries the informaton about token owner's roles and privileges. The authentication service allows/denies the access to system functions based on provided auth_token. 
+## Use Case & Class Diagram for each service
+### Model Service
+![model_service_use_case](images/model_use_case.png)
