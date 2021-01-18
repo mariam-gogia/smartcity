@@ -12,7 +12,7 @@ The project consists of 4 services:
 ## Use Case & Class Diagram for each service
 ### Model Service
 Use Case Diagram
-![model_service_use_case](images/model_use_case.png)
+![model_service_use_case](images/model_use_case.png =250x250)
 
 Class Diagram
 ![model_service_class](images/model_class.png)
