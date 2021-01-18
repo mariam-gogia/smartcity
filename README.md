@@ -11,8 +11,9 @@ The project consists of 4 services:
 - **Authentication Service**: the auth_token is required to execute any action in the system. The auth_token carries the informaton about token owner's roles and privileges. The authentication service allows/denies the access to system functions based on provided auth_token. 
 ## Use Case & Class Diagram for each service
 ### Model Service
-Use Case Diagram \n
-<img src="images/model_use_case.png" width="700" height="600">
+Use Case Diagram \
+
+<img src="images/model_use_case.png" width="800" height="600">
 
 
 Class Diagram
