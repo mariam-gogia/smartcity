@@ -4,7 +4,7 @@ The Smart City is a fully automated city of the future. The city is equipped wit
 
 ## Services
 
-The project consists of 4 services: 
+The project consists of 4 services: \
 **Ledger Service**: responsible for monetary transactions \
 **Model Service**: responsible for defining and maintaining objects in the system (cities, residents, IoTs) \
 **Controller Service**: 'the brain' of the system, responsible for reacting on events recieved from sensors. Monitors cities, devices, and people in the system. \
