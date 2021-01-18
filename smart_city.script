@@ -1,0 +1,70 @@
+# upon super_admin log in, admin permissions and role are automatically initialized
+log in super_admin initializeservice
+
+# define permissions
+# define permission <permission_id> <permission_name> <permission_description>
+define permission scms_control_robot "Control Robot" "Full Control of Robots"
+define permission scms_drive_car "Drive Car" "Drive a car"
+define permission scms_manage_city "Create, Update City" "Create or update a City"
+define permission scms_manage_device "Create, Update Device" "Manage devices"
+define permission scms_ride_bus "Ride Bus" "Riding bus permission"
+
+# defining roles
+# define role <role_id> <role_name> <role_description>
+define role adult_role "Adult Role" "Has all permissions of an adult"
+define role child_role "Child Role" "Has all permissions of a child"
+define role public_admin_role "Public Administrator Role" "Has all permissions of a public administrator"
+
+# add permission (permission, role ) to role
+# add_permission to_role <role_id> <permission_id> 
+add_permission to_role admin_role auth_user_admin
+add_permission to_role admin_role scms_control_robot
+add_permission to_role admin_role scms_drive_car
+add_permission to_role admin_role scms_manage_city
+add_permission to_role public_admin_role scms_control_robot
+add_permission to_role public_admin_role scms_drive_car
+add_permission to_role adult_role scms_control_robot
+add_permission to_role adult_role scms_drive_car
+add_permission to_role adult_role scms_ride_bus
+add_permission to_role child_role scms_control_robot
+add_permission to_role child_role scms_ride_bus
+
+
+# create user
+# create user <user_id> <user_name>
+create user resident_1 "resident adult Jane"
+create user resident_2 "resident child Billy"
+create user visitor_1 "Anonymous"
+create user p_admin_1 "Debra Smart"
+
+# add user_credential
+# add user_credential <user_id> <biometric|password> <value>
+add user_credential resident_1 biometric voiceprint:jane-voiceprint
+add user_credential resident_2 biometric voiceprint:billy-voiceprint
+add user_credential resident_2 biometric faceprint:billy-faceprint
+add user_credential visitor_1 biometric faceprint:adam-faceprint
+add user_credential p_admin_1 password secret
+
+# add role to user
+# add_role to_user <user_id> <role>
+add_role to_user resident_1 adult_role
+add_role to_user resident_2 child_role
+add_role to_user visitor_1 adult_role
+add_role to_user p_admin_1 admin_role
+
+# define resource
+
+define resource city1 "City 1" "City 1 Resource"
+define resource city2 "City 2" "City 2 Resource"
+
+
+# create resource role 
+# create resource_role <resource_role_name> <role> <resource>
+create resource_role city1_public_administrator_resource_role public_admin_role city1
+create resource_role city2_public_administrator_resource_role public_admin_role city2
+
+# add resource role to user
+add_role to_user p_admin_1 city1_public_administrator_resource_role
+add_role to_user p_admin_1 city2_public_administrator_resource_role
+
+

@@ -1,0 +1,295 @@
+Super admin login successful
+Permission scms_control_robot defined
+Permission scms_drive_car defined
+Permission scms_manage_person defined
+Permission scms_manage_city defined
+Permission scms_manage_device defined
+Permission scms_ride_bus defined
+AuthenticationException: createPermission: Permission scms_manage_city Already exists
+Role adult_role defined
+Role child_role defined
+Role public_admin_role defined
+Permission scms_manage_city to public_admin_role added
+Permission scms_manage_device to public_admin_role added
+Permission scms_manage_person to public_admin_role added
+Permission scms_simulate_event to public_admin_role added
+Permission scms_manage_device to admin_role added
+Permission scms_control_robot to public_admin_role added
+Permission scms_control_robot to public_admin_role added
+Permission scms_drive_car to public_admin_role added
+Permission scms_control_robot to adult_role added
+Permission scms_drive_car to adult_role added
+Permission scms_ride_bus to adult_role added
+Permission scms_control_robot to child_role added
+Permission scms_ride_bus to child_role added
+User resident_1 defined
+User resident_2 defined
+User visitor_1 defined
+User p_admin_1 defined
+Credentials to resident_1 added
+Credentials to resident_2 added
+Credentials to resident_2 added
+Credentials to visitor_1 added
+Credentials to p_admin_1 added
+Role adult_role to resident_1 added
+Role child_role to resident_2 added
+Role adult_role to visitor_1 added
+Role public_admin_role to p_admin_1 added
+Resource city_1 defined
+Resource city_2 defined
+ResourceRole city_1_public_administrator_resource_role defined
+ResourceRole city_2_public_administrator_resource_role defined
+Role city_1_public_administrator_resource_role to p_admin_1 added
+Role city_2_public_administrator_resource_role to p_admin_1 added
+resident_1 login successful
+AccessDeniedException: createPermission - checkAccess: access denied
+p_admin_1 login successful
+Command: define-city city_1 successful
+Command: define-city city_2 successful
+Command: define-device city_1:bot_1 successful
+Command: define-device city_1:bot_2 successful
+Command: define-device city_1:bot_3 successful
+Command: define-device city_1:bot_4 successful
+Command: define-device city_2:bot_1 successful
+Command: define-device city_2:bot_2 successful
+Command: define-device city_2:bot_3 successful
+Command: define-device city_2:bot_4 successful
+Command: define-person resident_1 successful
+Command: define-person resident_2 successful
+Command: define-person visitor_1 successful
+Command: define-person p_admin_1 successful
+Command: define-device city_1:car_1 successful
+Command: define-device city_1:car_2 successful
+Command: define-device city_2:car_1 successful
+Command: define-device city_2:car_2 successful
+p_admin_1 logged out
+InvalidAuthTokenException: checkAccess: Expired token
+InvalidAuthTokenException: checkAccess: Expired token
+resident_2 login successful
+AccessDeniedException: checkAccess - defineDevice: access denied
+AccessDeniedException: checkAccess - defineDevice: access denied
+resident_2 logged out
+AccessDeniedException: login: invalid credentials
+p_admin_1 login successful
+Command: define-device city_2:ps_1 successful
+Command: define-device city_1:ps_1 successful
+Command: define-device city_1:bus_1 successful
+Command: define-device city_2:bus_1 successful
+Command: define-device city_1:ss_1 successful
+Command: define-device city_2:ss_1 successful
+Command: define-device city_1:kiosk_1 successful
+Command: define-device city_2:kiosk_1 successful
+Command: define-device city_1:sl_1 successful
+Command: define-device city_2:sl_1 successful
+Incoming event: city_1:bus_1 camera value "Person boards bus" subject: visitor_1
+Event response:
+Enjoy your free ride visitor_1
+
+Incoming event:city_1:sl_1 camera value "fire"
+Event response:
+There is fire emergency in city_1 please find shelter immediately.
+1/2 of the robots have been sent to help with emergency and the other half are helping people find shelters.
+
+Command: show-device city_1:bot_1
+
+Device ID: city_1:bot_1
+Location:  Lat: 42.2222 Long: -71.1111
+Enabled: true
+Status On: true
+Latest event: city_1:sl_1 camera value "fire"
+Activity: Helping people find shelter
+
+Command: show-device city_1:bot_2
+
+Device ID: city_1:bot_2
+Location:  Lat: 42.2525 Long: -71.2525
+Enabled: true
+Status On: true
+Latest event: city_1:sl_1 camera value "fire"
+Activity: Helping people find shelter
+
+Command: show-device city_1:bot_3
+
+Device ID: city_1:bot_3
+Location:  Lat: 42.377 Long: -71.1167
+Enabled: true
+Status On: true
+Latest event: city_1:sl_1 camera value "fire"
+Activity: Helping with emergency at the location
+
+Command: show-device city_1:bot_4
+
+Device ID: city_1:bot_4
+Location:  Lat: 42.377 Long: -71.1167
+Enabled: true
+Status On: true
+Latest event: city_1:sl_1 camera value "fire"
+Activity: Helping with emergency at the location
+
+Incoming event: city_1:ps_1 camera value "Vehicle city_1:car_1 parked for 1 hour."
+Event response:
+city_1:car_1 was charged 25 units plus the transaction fee by city_1:ps_1
+
+Command: show-device city_1:car_1
+
+Device ID: city_1:car_1
+Type: car
+Location:  Lat: 43.1234 Long: -71.4572
+Enabled: true
+Status On: true
+Activity: Parked
+Latest event: city_1:ps_1 camera value "Vehicle city_1:car_1 parked for 1 hour."
+Max Capacity: 30
+Fee: 1
+
+Incoming event: city_1:bus_1 camera value "Person boards bus" subject: resident_1
+Event response:
+Controller Exception: BoardBus : Insufficient Funds
+
+Instance of the Authentication Module
+User id: p_admin_1
+Name: "Debra Smart"
+Privilege id: public_admin_role
+Name: "Public Administrator Role"
+Description: "Has all permissions of a public administrator"
+Privilege id: scms_manage_city
+Name: "Create, Update City"
+Description: "Create or update a City"
+Privilege id: scms_manage_device
+Name: "Create, Update Device"
+Description: "Manage devices"
+Privilege id: scms_manage_person
+Name: "Control Residents"
+Description: "Create, update, show persons"
+Privilege id: scms_simulate_event
+Name: Simulate event
+Description: Simulate events
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_drive_car
+Name: "Drive Car"
+Description: "Drive a car"
+Privilege id: city_1_public_administrator_resource_role
+Name: "Public Administrator Role"-city_1
+Description: resource role for city_1
+Resource id: city_1
+Description: "Cambridge"
+Privilege id: public_admin_role
+Name: "Public Administrator Role"
+Description: "Has all permissions of a public administrator"
+Privilege id: scms_manage_city
+Name: "Create, Update City"
+Description: "Create or update a City"
+Privilege id: scms_manage_device
+Name: "Create, Update Device"
+Description: "Manage devices"
+Privilege id: scms_manage_person
+Name: "Control Residents"
+Description: "Create, update, show persons"
+Privilege id: scms_simulate_event
+Name: Simulate event
+Description: Simulate events
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_drive_car
+Name: "Drive Car"
+Description: "Drive a car"
+Privilege id: city_2_public_administrator_resource_role
+Name: "Public Administrator Role"-city_2
+Description: resource role for city_2
+Resource id: city_2
+Description: "London"
+Privilege id: public_admin_role
+Name: "Public Administrator Role"
+Description: "Has all permissions of a public administrator"
+Privilege id: scms_manage_city
+Name: "Create, Update City"
+Description: "Create or update a City"
+Privilege id: scms_manage_device
+Name: "Create, Update Device"
+Description: "Manage devices"
+Privilege id: scms_manage_person
+Name: "Control Residents"
+Description: "Create, update, show persons"
+Privilege id: scms_simulate_event
+Name: Simulate event
+Description: Simulate events
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_drive_car
+Name: "Drive Car"
+Description: "Drive a car"
+User id: resident_2
+Name: "resident child Billy"
+Privilege id: child_role
+Name: "Child Role"
+Description: "Has all permissions of a child"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_ride_bus
+Name: "Ride Bus"
+Description: "Riding bus permission"
+User id: resident_1
+Name: "resident adult Jane"
+Privilege id: adult_role
+Name: "Adult Role"
+Description: "Has all permissions of an adult"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_drive_car
+Name: "Drive Car"
+Description: "Drive a car"
+Privilege id: scms_ride_bus
+Name: "Ride Bus"
+Description: "Riding bus permission"
+User id: super_admin
+Name: admin
+Privilege id: admin_role
+Name: Admin Role
+Description: Has all permissions of an administrator
+Privilege id: auth_user_admin
+Name: User Administrator
+Description: Create, Update, Delete Users
+Privilege id: auth_role_entitlement_admin
+Name: User Administrator
+Description: Create, Update, Delete Entitlements
+Privilege id: auth_resource_admin
+Name: User Administrator
+Description: Create, Update, Delete Resources
+Privilege id: scms_simulate_event
+Name: Simulate event
+Description: Simulate events
+Privilege id: scms_charge_users
+Name: Charge accounts
+Description: Charge ledger accounts
+Privilege id: scms_manage_device
+Name: "Create, Update Device"
+Description: "Manage devices"
+User id: visitor_1
+Name: "Anonymous"
+Privilege id: adult_role
+Name: "Adult Role"
+Description: "Has all permissions of an adult"
+Privilege id: scms_control_robot
+Name: "Control Robot"
+Description: "Full Control of Robots"
+Privilege id: scms_drive_car
+Name: "Drive Car"
+Description: "Drive a car"
+Privilege id: scms_ride_bus
+Name: "Ride Bus"
+Description: "Riding bus permission"

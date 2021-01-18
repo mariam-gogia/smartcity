@@ -1,0 +1,184 @@
+# upon super_admin log in, admin permissions and role are automatically initialized
+log in super_admin initializeservice
+
+# define permissions
+# define permission <permission_id> <permission_name> <permission_description>
+define permission scms_control_robot "Control Robot" "Full Control of Robots"
+define permission scms_drive_car "Drive Car" "Drive a car"
+define permission scms_manage_person "Control Residents" "Create, update, show persons"
+define permission scms_manage_city "Create, Update City" "Create or update a City"
+define permission scms_manage_device "Create, Update Device" "Manage devices"
+define permission scms_ride_bus "Ride Bus" "Riding bus permission"
+# expect permission already exists 
+define permission scms_manage_city "Create, Update City" "Create or update a City"
+
+
+# defining roles
+# define role <role_id> <role_name> <role_description>
+define role adult_role "Adult Role" "Has all permissions of an adult"
+define role child_role "Child Role" "Has all permissions of a child"
+define role public_admin_role "Public Administrator Role" "Has all permissions of a public administrator"
+
+# add permission (permission, role) to role
+# add_permission to_role <role_id> <permission_id> 
+
+add_permission to_role public_admin_role scms_manage_city
+add_permission to_role public_admin_role scms_manage_device
+add_permission to_role public_admin_role scms_manage_person
+add_permission to_role public_admin_role scms_simulate_event
+
+add_permission to_role admin_role scms_manage_device
+add_permission to_role public_admin_role scms_control_robot
+add_permission to_role public_admin_role scms_control_robot
+add_permission to_role public_admin_role scms_drive_car
+add_permission to_role adult_role scms_control_robot
+add_permission to_role adult_role scms_drive_car
+add_permission to_role adult_role scms_ride_bus
+add_permission to_role child_role scms_control_robot
+add_permission to_role child_role scms_ride_bus
+
+
+# create user
+# create user <user_id> <user_name>
+create user resident_1 "resident adult Jane"
+create user resident_2 "resident child Billy"
+create user visitor_1 "Anonymous"
+create user p_admin_1 "Debra Smart"
+
+# add user_credential
+# add user_credential <user_id> <biometric|password> <value>
+add user_credential resident_1 biometric voiceprint:jane-voiceprint
+add user_credential resident_2 biometric voiceprint:billy-voiceprint
+add user_credential resident_2 biometric faceprint:billy-faceprint
+add user_credential visitor_1 biometric faceprint:adam-faceprint
+add user_credential p_admin_1 password secret
+
+# add role to user
+# add_role to_user <user_id> <role>
+add_role to_user resident_1 adult_role
+add_role to_user resident_2 child_role
+add_role to_user visitor_1 adult_role
+add_role to_user p_admin_1 public_admin_role
+
+# define resource
+
+define resource city_1 "Cambridge" "Cambridge Resource"
+define resource city_2 "London" "London Resource"
+
+
+# create resource role 
+# create resource_role <resource_role_name> <role> <resource>
+create resource_role city_1_public_administrator_resource_role public_admin_role city_1
+create resource_role city_2_public_administrator_resource_role public_admin_role city_2
+
+# add resource role to user
+add_role to_user p_admin_1 city_1_public_administrator_resource_role
+add_role to_user p_admin_1 city_2_public_administrator_resource_role
+
+# log in resident_1
+log in resident_1 voiceprint:jane-voiceprint
+
+# attempt to access a method she has no permission for
+# expect access denied exception
+
+define permission test_permission "Create new cities" "Define a new City"
+
+# log in public administrator to define entities
+log in p_admin_1 secret
+
+
+# define city 
+define city city_1 name Cambridge-MA account cambridge-account lat 42.3766 long -71.1160 radius 100
+define city city_2 name London-UK account london-account lat 51.509865 long -0.118092 radius 50
+
+
+#define 4 robots in each city
+define robot city_1:bot_1 lat 42.2222 long -71.1111 enabled  true activity "standing"
+define robot city_1:bot_2 lat 42.2525 long -71.2525 enabled  true activity "cleaning"
+define robot city_1:bot_3 lat 42.5555 long -71.3535 enabled  true activity "walking"
+define robot city_1:bot_4 lat 42.3735 long -71.1205 enabled  true activity "helping with groceries"
+
+define robot city_2:bot_1 lat 51.5555 long -0.1200 enabled  true activity "standing"
+define robot city_2:bot_2 lat 51.79865 long -0.138092 enabled  true activity "cleaning"
+define robot city_2:bot_3 lat 51.80865 long -0.148087 enabled  true activity "walking"
+define robot city_2:bot_4 lat 51.40809 long -0.158091 enabled  true activity "helping with groceries"
+
+# define the same users in SmartCity as in Authenticaition module
+
+define resident resident_1 name jane bio-metric "voice-print='voiceprint:jane-voiceprint',face-print='faceprint-mary_lnd'" phone 781-222-3344 role adult lat 51.494263 long -0.144457 account resident_1
+
+define resident resident_2 name jane bio-metric "voice-print='voiceprint:billy-voiceprint',face-print='faceprint:billy-faceprint'" phone 781-222-3344 role adult lat 51.494263 long -0.144457 account resident_2
+
+define visitor visitor_1 bio-metric "face-print='faceprint:adam-faceprint'" lat 52.521653 long 13.409819 
+
+define resident p_admin_1 name jane bio-metric "voice-print='voiceprint:admin',face-print='faceprint:admin'" phone 781-222-3344 role adult lat 42.3735 long -71.1205 account p_admin_1
+
+
+#define 2 cars in Cambridge
+
+define vehicle city_1:car_1 lat 42.3365 long -71.4514 enabled  true  type  car  activity "on route" capacity 30 fee 1
+define vehicle city_1:car_2 lat 42.9864 long -71.9814 enabled  true  type  car  activity "on route" capacity 30 fee 1
+
+#define 2 cars in london
+
+define vehicle city_2:car_1 lat 51.1234 long -0.12364 enabled  true  type  car  activity "on route" capacity 30 fee 1
+define vehicle city_2:car_2 lat 51.8736 long -0.11987 enabled  true  type  car  activity "on route" capacity 30 fee 1
+
+log out
+
+
+# define other types of devices 1 per each city
+# expect error as admin is logged out the token is invalid
+define parking-space city_2:ps_1 lat 51.18674 long -0.13458 enabled true  rate 20
+define parking-space city_1:ps_1 lat 43.1234 long -71.4572 enabled true  rate 25
+
+# log in as resident and try to define objects
+# expect access denied
+
+log in resident_2 voiceprint:billy-voiceprint
+
+define parking-space city_2:ps_1 lat 51.18674 long -0.13458 enabled true  rate 20
+define parking-space city_1:ps_1 lat 43.1234 long -71.4572 enabled true  rate 25
+
+log out
+
+# log in with invalid credentials
+# expect AccessDeniedException
+
+log in p_admin_1 top_secret
+
+# log in as admin and continue defining objects
+
+log in p_admin_1 secret
+
+define parking-space city_2:ps_1 lat 51.18674 long -0.13458 enabled true  rate 20
+define parking-space city_1:ps_1 lat 43.1234 long -71.4572 enabled true  rate 25
+define vehicle city_1:bus_1 lat 42.5738 long -71.15614 enabled  true  type  bus  activity "on route" capacity 30 fee 2000
+define vehicle city_2:bus_1 lat 52.45674 long -71.0023 enabled  true  type  bus  activity "on route" capacity 30 fee 1
+define street-sign city_1:ss_1 lat 42.3732 long -71.1202 enabled true text "Welcome to Harvard Square!"
+define street-sign city_2:ss_1 lat 42.3736 long -71.1214 enabled true text "Welcome to Big Ben!"
+define info-kiosk city_1:kiosk_1 lat 42.3766 long -71.1160 enabled true image https://media-cdn.tripadvisor.com/media/photo-s/05/94/cc/10/charles-hotel.jpg
+define info-kiosk city_2:kiosk_1 lat 52.58674 long -0.11458 enabled true image https://www.lwa-architects.com/wp-content/uploads/2014/12/Harvard-SciCtr_Ext-bikes-992x1250.jpg
+define street-light city_1:sl_1 lat 42.3770 long  -71.1167 enabled  true  brightness 8
+define street-light city_2:sl_1 lat 51.21674 long -71.13023 enabled  true  brightness 5
+
+# test some of the controller rules
+create sensor-event city_1:bus_1 type camera value "Person boards bus" subject visitor_1
+
+create sensor-event city_1:sl_1 type camera value "fire"
+show device city_1:bot_1
+show device city_1:bot_2
+show device city_1:bot_3
+show device city_1:bot_4
+
+#testing parking event rule - print the car details to ensure correct rule invocation
+create sensor-event city_1:ps_1 type camera value "Vehicle city_1:car_1 parked for 1 hour."
+
+show device city_1:car_1
+
+#testing board bus - city_1:bus_1 fee is intentionally set too high to invoke ControllerException
+create sensor-event city_1:bus_1 type camera value "Person boards bus" subject resident_1
+
+print inventory
+
+

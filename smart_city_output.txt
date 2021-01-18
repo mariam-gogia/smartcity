@@ -1,0 +1,39 @@
+Super admin login successful
+Permission scms_control_robot defined
+Permission scms_drive_car defined
+Permission scms_manage_city defined
+Permission scms_manage_device defined
+Permission scms_ride_bus defined
+Role adult_role defined
+Role child_role defined
+Role public_admin_role defined
+Permission auth_user_admin to admin_role added
+Permission scms_control_robot to admin_role added
+Permission scms_drive_car to admin_role added
+Permission scms_manage_city to admin_role added
+Permission scms_control_robot to public_admin_role added
+Permission scms_drive_car to public_admin_role added
+Permission scms_control_robot to adult_role added
+Permission scms_drive_car to adult_role added
+Permission scms_ride_bus to adult_role added
+Permission scms_control_robot to child_role added
+Permission scms_ride_bus to child_role added
+User resident_1 defined
+User resident_2 defined
+User visitor_1 defined
+User p_admin_1 defined
+Credentials to resident_1 added
+Credentials to resident_2 added
+Credentials to resident_2 added
+Credentials to visitor_1 added
+Credentials to p_admin_1 added
+Role adult_role to resident_1 added
+Role child_role to resident_2 added
+Role adult_role to visitor_1 added
+Role admin_role to p_admin_1 added
+Resource city1 defined
+Resource city2 defined
+ResourceRole city1_public_administrator_resource_role defined
+ResourceRole city2_public_administrator_resource_role defined
+Role city1_public_administrator_resource_role to p_admin_1 added
+Role city2_public_administrator_resource_role to p_admin_1 added
