@@ -27,3 +27,11 @@ Use Case Diagram
 Class Diagram
 ![authentication_service_class](images/authentication_class.png)
 
+
+### Controller Service
+Use Case Diagram
+
+<img src="images/controller_use_case.png" width="700" height="500">
+
+Class Diagram
+![contoller_class](images/controller_class.png)
