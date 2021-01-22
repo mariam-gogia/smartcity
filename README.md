@@ -21,7 +21,8 @@ Class Diagram
 
 ### Authentication Service
 Use Case Diagram
-![authentication_service_use_case](images/authentication_use_case.png)
+
+<img src="images/authentication_use_case.png" width="900" height="600">
 
 Class Diagram
 ![authentication_service_class](images/authentication_class.png)
