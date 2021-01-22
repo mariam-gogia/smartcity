@@ -35,3 +35,11 @@ Use Case Diagram
 
 Class Diagram
 ![contoller_class](images/controller_class.png)
+
+### Ledger Service
+Use Case Diagram
+
+<img src="images/ledger_use_case.png" width="700" height="500">
+
+Class Diagram
+![contoller_class](images/ledger_class.png)
