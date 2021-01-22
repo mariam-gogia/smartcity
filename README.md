@@ -22,7 +22,8 @@ Use Case Diagram
 
 
 Class Diagram
-![model_service_class](images/model_class.png)
+<img src="images/model_class.png" width="1000" height="800">
+
 
 ### Authentication Service
 Use Case Diagram
