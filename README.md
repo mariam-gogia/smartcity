@@ -22,7 +22,7 @@ Use Case Diagram
 
 
 Class Diagram
-<img src="images/model_class.png" width="2000" height="500">
+![model_class](images/model_class.png)
 
 
 ### Authentication Service
