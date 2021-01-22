@@ -30,7 +30,7 @@ Use Case Diagram
 <img src="images/authentication_use_case.png" width="700" height="500">
 
 Class Diagram
-![authentication_service_class](images/authentication_class.png)
+<img src="images/authentication_class.png" width="1000" height="800">
 
 
 ### Controller Service
