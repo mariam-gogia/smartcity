@@ -12,6 +12,8 @@ The project consists of 4 services:
 
 **For documentation and detailed information for each service please check 'Design_Documents' folder.
 
+**The system can be tested by reading the script (text). e.g. provided smart_city.script tests the authnetication service functionalities.
+
 ## Use Case & Class Diagram for each service
 ### Model Service
 Use Case Diagram
